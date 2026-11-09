@@ -147,16 +147,16 @@ print(laul.upper())
 
 
 # Ülesanne 7
+try: 
+    a = float(input("Sisesta esimene külg: "))
+    b = float(input("Sisesta teine külg: "))
 
-a = float(input("Sisesta esimene külg: "))
-b = float(input("Sisesta teine külg: "))
+    umbermoot = 2 * (a + b)
+    pindala = a * b
 
-umbermoot = 2 * (a + b)
-pindala = a * b
-
-print("Ümbermõõt:", umbermoot)
-print("Pindala:", pindala)
-
+    print("Ümbermõõt:", umbermoot)
+    print("Pindala:", pindala)
+except ValueError: 
 
 # Ülesanne 8
 
