@@ -157,21 +157,24 @@ try:
     print("Ümbermõõt:", umbermoot)
     print("Pindala:", pindala)
 except ValueError: 
-
+    print("Viga: Palun sisesta ainult arvud!")
 # Ülesanne 8
+try:
+    liitrid = float(input("Sisesta kütuse liitrid: "))
+    kilomeetrid = float(input("Sisesta läbitud kilomeetrid: "))
 
-liitrid = float(input("Sisesta kütuse liitrid: "))
-kilomeetrid = float(input("Sisesta läbitud kilomeetrid: "))
+    kulu = liitrid / kilomeetrid * 100
 
-kulu = liitrid / kilomeetrid * 100
-
-print("Kütusekulu 100 km kohta:", kulu)
-
+    print("Kütusekulu 100 km kohta:", kulu)
+except ValueError:
+    print("Liitrid ja kilometrid on arvud")
 
 # Ülesanne 9
-
-kiirus = 29.9
-minutid = float(input("Sisesta minutid: "))
+try:
+    kiirus = 29.9
+    minutid = float(input("Sisesta minutid: "))
+except ValueError:
+    print("Viga: Palun sisesta ainult arvud")
 
 kaugus = kiirus * minutid / 60
 
@@ -179,12 +182,13 @@ print("Läbitud kaugus:", kaugus, "km")
 
 
 # Ülesanne 10
+try:
+    minutid = int(input("Sisesta minutid: "))
 
-minutid = int(input("Sisesta minutid: "))
+    tunnid = minutid // 60
+    jaak = minutid % 60
 
-tunnid = minutid // 60
-jaak = minutid % 60
-
-print(f"{tunnid}:{jaak:02d}")  
-
+    print(f"{tunnid}:{jaak:02d}")  
+except ValueError:
+    print("Viga: Palun sisesta ainult täis arvud")
 
