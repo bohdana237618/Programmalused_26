@@ -273,3 +273,73 @@ try:
         print("Viga: tundmatu tehtemärk.")
 except ValueError:
     print("Viga: palun sisesta arv.")
+
+from datetime import date
+
+#11. Juubel
+try:
+    sunniaasta=int(input("Sisesta oma sünniaasta: "))
+    praegune_aasta=date.today().year
+    vanus=praegune_aasta-sunniaasta
+    if 0 < vanus <= 120:
+        print(f"Sel aastal saad {vanus} aastat vanaks.")
+        if vanus%10==0:
+            print("Tegemist on juubeliga!")
+        else:
+            jaak=10-vanus%10
+            print(f"Tegemist ei ole juubeliga. Järgmise juubelini on {jaak} aastat.")
+    else:
+        print("Viga andmetes.")
+except ValueError:
+    print("Palun sisesta sünniaasta numbrina.")
+
+#12. Müük
+try:
+    hind=float(input("Sisesta toote hind (eurodes): ").replace(",","."))
+    if hind > 0:
+        if hind <= 10:
+            allahindlus=10
+        else:
+            allahindlus=20
+        lopphind=hind*(1-allahindlus/100)
+        print(f"Allahindlus on {allahindlus}%.")
+        print(f"Toote lõplik hind on {lopphind:.2f} eurot.")
+    else:
+        print("Viga: hind peab olema positiivne.")
+except ValueError:
+    print("Palun sisesta hind numbrina.")
+
+#13. Jalgpallimeeskond
+sugu=input("Sisesta sugu (mees/naine): ").lower()
+if sugu=="naine":
+    print("Kahjuks ei sobi sa meeskonda.")
+elif sugu=="mees":
+    try:
+        vanus=int(input("Sisesta oma vanus: "))
+        if 16 <= vanus <= 18:
+            print("Sobid meeskonda!")
+        else:
+            print("Kahjuks ei sobi sa meeskonda, vanus peab olema 16–18 aastat.")
+    except ValueError:
+        print("Palun sisesta oma vanus numbrina.")
+else:
+    print("Viga: sisesta kas 'mees' või 'naine'.")
+
+#14. Busside logistika
+try:
+    inimesi=int(input("Sisesta inimeste arv: "))
+    kohti=int(input("Sisesta kohtade arv ühes bussis: "))
+    if inimesi > 0 and kohti > 0:
+        bussid=inimesi//kohti
+        viimases=inimesi%kohti
+        if viimases==0:
+            #inimesed mahuvad täpselt ära, viimane buss on täis
+            viimases=kohti
+        else:
+            bussid+=1
+        print(f"Vaja on {bussid} bussi.")
+        print(f"Viimases bussis on {viimases} inimest.")
+    else:
+        print("Viga: mõlemad arvud peavad olema positiivsed täisarvud.")
+except ValueError:
+    print("Palun sisesta mõlemad väärtused täisarvudena.")
