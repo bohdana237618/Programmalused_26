@@ -273,3 +273,70 @@ try:
         print("Viga: tundmatu tehtemärk.")
 except ValueError:
     print("Viga: palun sisesta arv.")
+
+from datetime import date
+
+# 11. Juubel 
+print("--- 11. Juubel ---")
+sünniaasta = int(input("Sisesta oma sünniaasta: "))
+praegune_aasta = date.today().year
+vanus = praegune_aasta - sünniaasta
+
+if vanus % 10 == 0:
+    print(f"Sel aastal saad {vanus} aastaseks, see on juubel!")
+else:
+    jargmine = 10 - vanus % 10
+    print(f"Sel aastal saad {vanus} aastaseks, see ei ole juubel.")
+    print(f"Järgmise juubelini on {jargmine} aastat.")
+
+# ---------- 12. Müük ----------
+print("\n--- 12. Müük ---")
+hind = float(input("Sisesta toote hind (eurodes): "))
+
+if hind <= 10:
+    allahindlus = 10
+else:
+    allahindlus = 20
+
+lopphind = hind * (1 - allahindlus / 100)
+print(f"Sa saad {allahindlus}% allahindlust.")
+print(f"Toote lõplik hind on {lopphind:.2f} eurot.")
+
+#  13. Jalgpallimeeskond 
+print("\n--- 13. Jalgpallimeeskond ---")
+sugu = input("Sisesta sugu (mees/naine): ").lower()
+
+if sugu == "naine":
+    print("Kahjuks sa meeskonda ei sobi, sest meeskonda võetakse ainult meesoost kandidaate.")
+elif sugu == "mees":
+    vanus = int(input("Sisesta oma vanus: "))
+    if 16 <= vanus <= 18:
+        print("Sa sobid meeskonda!")
+    else:
+        print("Kahjuks sa meeskonda ei sobi, sest vanus peab olema 16–18 aastat.")
+else:
+    print("Tundmatu sugu, palun sisesta 'mees' või 'naine'.")
+
+#  14. Busside logistika 
+print("\n--- 14. Busside logistika ---")
+inimesi_str = input("Sisesta inimeste arv: ")
+kohti_str = input("Sisesta kohtade arv ühes bussis: ")
+
+if inimesi_str.isdigit() and kohti_str.isdigit() and int(inimesi_str) > 0 and int(kohti_str) > 0:
+    inimesi = int(inimesi_str)
+    kohti = int(kohti_str)
+
+    taisbussid = inimesi // kohti
+    jaak = inimesi % kohti
+
+    if jaak == 0:
+        busse = taisbussid
+        viimases = kohti
+    else:
+        busse = taisbussid + 1
+        viimases = jaak
+
+    print(f"Kõigi inimeste vedamiseks on vaja {busse} bussi.")
+    print(f"Viimases bussis on {viimases} inimest.")
+else:
+    print("Viga: mõlemad arvud peavad olema positiivsed täisarvud.")
