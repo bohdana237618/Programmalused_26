@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>dbbb3d01-841e-4e76-80a2-d28a09266952</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>too2.1.py</StartupFile>
+    <StartupFile>Hindeline töö.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,6 +21,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Hindeline töö.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="module1.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Programmalused_26.py" />
     <Compile Include="too2.1.py">
       <SubType>Code</SubType>
