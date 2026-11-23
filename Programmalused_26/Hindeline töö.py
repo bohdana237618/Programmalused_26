@@ -79,7 +79,7 @@ elif valik == "3":
     except ValueError:
         print("Viga: sisesta arv")
 else:
-    print("Vigane valik")
+    print("Vigane valik") 
 
 
  
