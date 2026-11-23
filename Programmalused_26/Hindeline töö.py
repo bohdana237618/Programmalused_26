@@ -82,4 +82,91 @@ else:
     print("Vigane valik") 
 
 
+
+print("Vali programm:")
+print("1 - Ruutvõrrandi lahendamine")
+print("2 - Palga arvutamine")
+print("3 - Parkimise hind")
+
+valik = input("Sisesta valik (1-3) => ")
+
+if valik == "1":
+    # ---------- Ruutvõrrandi lahendamine ----------
+    # Parandus: sõne alguses ja lõpus olid erinevad jutumärgid: "...'
+    print("Ruutvõrrandi lahendamine")
+    try:
+        a = float(input("Sisesta a => "))
+        b = float(input("Sisesta b => "))
+        # Parandus: input() tagastab teksti -> lisatud float()
+        c = float(input("Sisesta c => "))
+
+        # Lisa: kui a on 0, siis see pole ruutvõrrand (nulliga jagamine)
+        if a == 0:
+            print("Viga: a ei tohi olla 0")
+        else:
+            D = b * b - 4 * a * c
+
+            # Parandus: if D>0 -> puudus koolon
+            if D > 0:
+                # Parandus: /2*a -> peab olema /(2*a)
+                x1 = (-b + D ** 0.5) / (2 * a)
+                x2 = (-b - D ** 0.5) / (2 * a)
+                print("Kaks lahendit:", x1, x2)
+            # Parandus: else if D=0: -> peab olema elif D==0:
+            elif D == 0:
+                x = -b / (2 * a)
+                print("Üks lahend:", x)
+            else:
+                # Parandus: taandrida - print oli else-ga samal tasemel
+                print("Reaalarvulised lahendid puuduvad")
+    except ValueError:
+        print("Viga: sisesta arv")
+
+elif valik == "2":
+    # ---------- Palga arvutamine ----------
+    print("Palga arvutamine")
+    try:
+        tunnid = float(input("Sisesta töötunnid nädalas => "))
+        tunnitasu = float(input("Sisesta tunnitasu (€) => "))
+
+        # Parandus: tunnid<0 and tunnid>168 -> peab olema or
+        # (arv ei saa olla korraga alla 0 ja üle 168)
+        if tunnid < 0 or tunnid > 168:
+            print("Vigane tundide arv")
+        elif tunnid <= 40:
+            palk = tunnid * tunnitasu
+            print("Nädalapalk:", palk, "€")
+        else:
+            # Parandus: 1,5 -> peab olema 1.5 (punkt, mitte koma)
+            palk = 40 * tunnitasu + (tunnid - 40) * tunnitasu * 1.5
+            print("Nädalapalk koos ületundidega:", palk, "€")
+    except ValueError:
+        print("Viga: sisesta arv")
+
+elif valik == "3":
+    # ---------- Parkimise hind ----------
+    print("Parkimise hind")
+    try:
+        tunnid = int(input("Sisesta parkimise aeg tundides => "))
+
+        # Parandus: tunnid=<0 -> tunnid<=0
+        if tunnid <= 0:
+            print("Vigane aeg")
+        # Parandus: tingimuste järjekord - kõigepealt >=8, siis >=3,
+        # muidu 10 € haru ei täitunud kunagi
+        elif tunnid >= 8:
+            print("Hind: 10 € (päevapilet)")
+        elif tunnid >= 3:
+            print("Hind: 5 €")
+        # Parandus: else: puudus koolon
+        else:
+            # Parandus: print lõpus puudus sulg )
+            print("Hind: 2 €")
+    except ValueError:
+        print("Viga: sisesta täisarv")
+
+else:
+    print("Vigane valik")
+
+
  
