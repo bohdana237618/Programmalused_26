@@ -1,19 +1,18 @@
 ﻿while True:
-    print("\nVali ülesanne:")
-    print("1. Täisarvude loendamine")
-    print("2. Naturaalarvude summa")
-    print("3. Positiivsete arvude korrutis")
-    print("4. Arvude ruudud")
-    print("5. Negatiivsete arvude summa")
-    print("6. Negatiivsed, positiivsed, nullid")
-    print("7. K-ga jaguvad arvud")
-    print("8. Tollid ja sentimeetrid")
-    print("9. Pank ja intress")
-    print("10. Paaride suurem arv")
-    valik = input("Sisesta ülesande number (1-5) või 'q' väljumiseks: ") 
-
-
-    if valik == "1":
+    print("""
+        1. Täisarvude loendamine
+        2. Naturaalarvude summa
+        3. Positiivsete arvude korrutis
+        4. Arvude ruudud
+        5. Negatiivsete arvude summa
+        6.Klaviatuurilt sisestatakse N arvu.
+          Koosta programm, mis määrab sisestatud arvude seast:
+          negatiivsete arvude arvu,
+          positiivsete arvude arvu,
+          nullide arvu.(N väärtus sisestatakse klaviatuurilt.)
+        7. Väljastada ekraanile arvud, mis on K-ga jaguvad vahemikust [A, B].""")
+    valik=input("Sisesta ülesande number (1-7) või 'q' väljumiseks: ")
+    if valik == '1':
         try:
             i = 0
             kogus = 0
@@ -25,8 +24,7 @@
             print("Täisarve:", kogus)
         except ValueError:
             print("Palun sisesta arv.")
-
-    elif valik == "2":
+    elif valik == '2':
         try:
             while True:
                 A = int(input("Sisesta arv A: "))
@@ -40,8 +38,7 @@
                     print("Palun sisesta positiivne täisarv.")
         except ValueError:
             print("Palun sisesta kehtiv täisarv.")
-
-    elif valik == "3":
+    elif valik == '3':
         try:
             korrutis = 1
             i = 0
@@ -55,12 +52,10 @@
             print("Korrutis:", korrutis)
         except ValueError:
             print("Palun sisesta arv.")
-
-    elif valik == "4":
+    elif valik == '4':
         for i in range(10, 21):
             print(i, "ruut:", i ** 2)
-
-    elif valik == "5":
+    elif valik == '5':
         try:
             while True:
                 N = int(input("Sisesta arv N > 0: "))
@@ -74,26 +69,7 @@
             print("Negatiivsete arvude summa:", summa)
         except ValueError:
             print("Palun sisesta täisarv.")
-
-    elif valik == "6":
-        try:
-            N = int(input("Sisesta N: "))
-            neg = 0
-            pos = 0
-            null = 0
-            for i in range(N):
-                arv = float(input(f"{i + 1}. arv: "))
-                if arv < 0:
-                    neg += 1
-                elif arv > 0:
-                    pos += 1
-                else:      
-                    null += 1
-            print("Negatiivseid:", pos)
-            print("Positiivseid:", neg)
-            print("Nulle:", null)
-        except ValueError:
-            print("Palun sisesta arv.")
+    elif valik == '6':
         while True:
             try:
                 N = int(input("Sisesta arv N > 0: "))
@@ -114,9 +90,27 @@
                 print("Positiivne arv")
             else:
                 print("Null")
+    elif valik == '7':
+        while True:
+            try:
+                A = int(input("Sisesta arv A: "))
+                B = int(input("Sisesta arv B: "))
+                K = int(input("Sisesta arv K: "))#Tee K kontroll, et see ei oleks 0
+                if K == 0:
+                    print("K ei tohi olla 0.")
+                    continue
+                break
+            except ValueError:
+                print("Palun sisesta kehtiv täisarv.")
+        if A > B:
+            print("A peab olema väiksem või võrdne B-ga. Siis vahetame need.")
+            A, B = B, A
+        print(f"Arvud vahemikus [{A}, {B}], mis on {K}-ga jaguvad:")
+        for i in range(A, B + 1):
+            if i % K == 0:
+                print(i)
     elif valik.lower() == 'q':
         print("Programmist väljumine...")
         break
     else:
-        print("Viga: Palun sisesta number 1-5 või 'q' väljumiseks.")
-   
+        print("Viga: Palun sisesta number 1-7 või 'q' väljumiseks.")
