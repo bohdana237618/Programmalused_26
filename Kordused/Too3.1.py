@@ -10,7 +10,8 @@
     print("8. Tollid ja sentimeetrid")
     print("9. Pank ja intress")
     print("10. Paaride suurem arv")
-    valik = input("Sisesta ülesande number (1-10) või 'q' väljumiseks: ")
+    valik = input("Sisesta ülesande number (1-5) või 'q' väljumiseks: ") 
+
 
     if valik == "1":
         try:
@@ -86,56 +87,36 @@
                     neg += 1
                 elif arv > 0:
                     pos += 1
-                else
+                else:      
                     null += 1
             print("Negatiivseid:", pos)
             print("Positiivseid:", neg)
             print("Nulle:", null)
         except ValueError:
             print("Palun sisesta arv.")
-
-    elif valik == "7":
-        try:
-            A = int(input("Sisesta A: "))
-            B = int(input("Sisesta B: "))
-            K = int(input("Sisesta K: "))
-            for i in range(A, B):
-                if i % K = 0:
-                    print(i)
-        except ValueError:
-            print("Palun sisesta täisarv.")
-        except ZeroDivisionError:
-            print("K ei tohi olla 0.")
-
-    elif valik == "8":
-        for toll in range(1, 20):
-            print(toll "tolli =", toll * 2.5, "cm")
-
-    elif valik == "9":
-        try:
-            S = float(input("Sisesta summa S: "))
-            N = float(input("Sisesta aastate arv N: "))
-            for i in range(N):
-                S *= 3
-            print("Summa", N, "aasta pärast:", round(S, 2))
-        except ValueError:
-            print("Palun sisesta arv.")
-
-    elif valik == "10":
-        try:
-            for i in range(10):
-                a = float(input("Esimene arv: "))
-                b = float(input("Teine arv: "))
-                if a > b:
-                    print("Suurem:", a)
+        while True:
+            try:
+                N = int(input("Sisesta arv N > 0: "))
+                if N > 0: break
+            except ValueError:
+                print("Palun sisesta kehtiv täisarv.")
+                continue
+        for i in range(N):
+            while True:
+                try:
+                    arv = float(input(f"{i + 1}. arv: "))
+                    break
+                except ValueError:
+                    print("Palun sisesta kehtiv arv.")
+            if arv < 0:
+                print("Negatiivne arv")
+            elif arv > 0:
+                print("Positiivne arv")
             else:
-                    print("Suurem:", c)
-        except ValueError:
-            print("Palun sisesta arv.")
-
-    elif valik.lower() == "q":
+                print("Null")
+    elif valik.lower() == 'q':
         print("Programmist väljumine...")
         break
-
     else:
-        print("Viga: sisesta number 1-10 või 'q' väljumiseks.")
+        print("Viga: Palun sisesta number 1-5 või 'q' väljumiseks.")
+   
