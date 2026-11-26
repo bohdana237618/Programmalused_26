@@ -10,8 +10,13 @@
           negatiivsete arvude arvu,
           positiivsete arvude arvu,
           nullide arvu.(N väärtus sisestatakse klaviatuurilt.)
-        7. Väljastada ekraanile arvud, mis on K-ga jaguvad vahemikust [A, B].""")
-    valik=input("Sisesta ülesande number (1-7) või 'q' väljumiseks: ")
+        7. Väljastada ekraanile arvud, mis on K-ga jaguvad vahemikust [A, B].
+        8. Tollid ja sentimeetrid
+        9. Pank ja intress
+        10. Paaride suurem arv
+        13. 7-ga jaguvad arvud 100-1000
+        17. Korrutustabel""")
+    valik=input("Sisesta ülesande number (1-10, 13, 17) või 'q' väljumiseks: ")
     if valik == '1':
         try:
             i = 0
@@ -109,8 +114,49 @@
         for i in range(A, B + 1):
             if i % K == 0:
                 print(i)
+    elif valik == '8':
+        for toll in range(1, 20):
+            print(toll, "tolli =", toll * 2.5, "cm")
+    elif valik == '9':
+        try:
+            S = float(input("Sisesta summa S: "))
+            N = int(input("Sisesta aastate arv N: "))
+            for i in range(N):
+                S = S * 1.03
+            print("Summa", N, "aasta pärast:", round(S, 2))
+        except ValueError:
+            print("Palun sisesta arv.")
+    elif valik == '10':
+        try:
+            for i in range(9):
+                a = float(input(f"{i + 1}. paar, esimene arv: "))
+                b = float(input(f"{i + 1}. paar, teine arv: "))
+                if a > b:
+                    print("Suurem:", a)
+                else:
+                    print("Suurem:", b)
+        except ValueError:
+            print("Palun sisesta arv.")
+    elif valik == '13':
+        loendur = 0
+        summa = 0
+        for i in range(100, 1001):
+            if i % 7 == 0:
+                print(i, end=" ")
+                loendur += 1
+                summa += i
+        print()
+        print("Arvude arv:", loendur)
+        print("Summa:", summa)
+    elif valik == '17':
+        try:
+            arv = int(input("Sisesta arv: "))
+            for i in range(1, 9):
+                print(f"{arv}*{i}={arv * i}")
+        except ValueError:
+            print("Palun sisesta täisarv.")
     elif valik.lower() == 'q':
         print("Programmist väljumine...")
         break
     else:
-        print("Viga: Palun sisesta number 1-7 või 'q' väljumiseks.")
+        print("Viga: Palun sisesta number 1-10, 13, 17 või 'q' väljumiseks.")
